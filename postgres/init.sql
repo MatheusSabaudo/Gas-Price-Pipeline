@@ -1,6 +1,3 @@
-CREATE DATABASE IF NOT EXISTS data_gas_price;
-
--- Create tables for gas price data
 CREATE TABLE IF NOT EXISTS gas_prices (
     id SERIAL PRIMARY KEY,
     kafka_key VARCHAR(100),
@@ -29,7 +26,6 @@ CREATE TABLE IF NOT EXISTS gas_prices (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Create indexes
 CREATE INDEX IF NOT EXISTS idx_gas_prices_timestamp ON gas_prices(timestamp);
 CREATE INDEX IF NOT EXISTS idx_gas_prices_region ON gas_prices(region_id);
 CREATE INDEX IF NOT EXISTS idx_gas_prices_fuel ON gas_prices(fuel_type_id);
