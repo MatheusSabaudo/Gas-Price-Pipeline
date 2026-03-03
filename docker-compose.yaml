@@ -10,9 +10,9 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./postgres/init:/docker-entrypoint-initdb.d
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql  # Mount file, not folder
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "airflow"]
+      test: ["CMD", "pg_isready", "-U", "admin", "-d", "gas-price"]  # Fixed healthcheck
       interval: 5s
       retries: 5
 
